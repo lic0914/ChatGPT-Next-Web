@@ -18,14 +18,14 @@ export async function requestOpenai(req: NextRequest) {
         ?.trim()
         .replaceAll("Bearer ", "")
         .trim() ?? "";
-
+    
     authHeaderName = "api-key";
-  } else {
+      } else {
     authValue = req.headers.get("Authorization") ?? "";
     authHeaderName = "Authorization";
   }
 
-  let path = `${req.nextUrl.pathname}${req.nextUrl.search}`.replaceAll(
+  let path = `${req.nextUrl.pathname}`.replaceAll(
     "/api/openai/",
     "",
   );
